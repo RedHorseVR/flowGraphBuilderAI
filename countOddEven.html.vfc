@@ -1,29 +1,28 @@
 ;  IRL FlowCode Version: Version 10.0
 ;  c1995-2015: Visual Flow Coder by 2LResearch
 ;
-;  File Name : SPEC.html.vfc
-;  File Date : 12:13:00 PM - 11:Sep:2025
+;  File Name : countOddEven.html.vfc
+;  File Date : 12:41:04 PM - 11:Sep:2025
 
 
 input(Main  CountingNumbers);//
-output(show only one number at a time);//
 set(start count at 1);//
 loop(repeat 20 times:);//
-output(show a bold black or red number indicating the count);//
+output(only show the current count);//
 branch(if( we get an even number   ));//
 path( then );//
 output(show red bolded number);//
 path(else );//
 output(show black bolded number);//
 bend(  end if );//
-lend( );//
+lend(press for next number);//
 end(exit);//
 
 
 
 ;INSECTA EMBEDDED SESSION INFORMATION
 ; 255 16777215 65280 16777088 16711680 13158600 13158600 0 255 255 9895835 6946660 3289650
-;    SPEC.html   //   ...
+;    countOddEven.html   //   ...
 ; notepad.exe
 ;INSECTA EMBEDDED ALTSESSION INFORMATION
-; 234 234 940 640 1 100   470   60    BuildAI.key  0
+; 389 738 951 566 11 100   458   72    BuildAI.key  0

@@ -2,10 +2,10 @@
 ;  c1995-2015: Visual Flow Coder by 2LResearch
 ;
 ;  File Name : NeetSheetsROI.vfc
-;  File Date : 09:45:20 AM - 11:Sep:2025
+;  File Date : 10:18:31 PM - 04:Sep:2025
 
 event(Please make a web page that uses the logic in the folowing flowchart);//
-set(use drop lists,  buttons or checks for efficient UI);//
+process(try to use popup dialoags for input()s);//
 end(flowchart followsbelow :  ----------------------------------------------);//
 
 input(MAIN);//
@@ -61,4 +61,4 @@ end(RETURN INJUTY COST);//
 ;    NeetSheetsROI   //   ...
 ; notepad.exe
 ;INSECTA EMBEDDED ALTSESSION INFORMATION
-; 94 49 1101 1295 35 79   567   78    default.key  0
+; 478 273 1125 1577 35 100   556   105    default.key  0

@@ -1,8 +1,8 @@
 ;  IRL FlowCode Version: Version 10.0
 ;  c1995-2015: Visual Flow Coder by 2LResearch
 ;
-;  File Name : SPEC.vfc
-;  File Date : 09:03:30 PM - 05:Sep:2025
+;  File Name : count.html.vfc
+;  File Date : 12:37:24 PM - 11:Sep:2025
 
 
 input(Main);//
@@ -13,7 +13,7 @@ end(exit);//
 
 ;INSECTA EMBEDDED SESSION INFORMATION
 ; 255 16777215 65280 16777088 16711680 13158600 13158600 0 255 255 9895835 6946660 3289650
-;    SPEC   //   ...
+;    count.html   //   ...
 ; notepad.exe
 ;INSECTA EMBEDDED ALTSESSION INFORMATION
-; 408 389 1093 866 0 180   498   193    default.key  0
+; 408 389 1093 866 1 180   546   60    BuildAI.key  0

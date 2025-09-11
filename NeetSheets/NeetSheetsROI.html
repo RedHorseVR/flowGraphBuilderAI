@@ -1,541 +1,132 @@
+Below is a simple HTML web page that implements the logic from your flowchart. The page includes buttons, dropdown lists, and checkboxes to gather input from the user. The design is basic but can be easily customized with CSS for better aesthetics.
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hotel Room Attendant Injury Cost Calculator</title>
+    <title>Neet Sheets ROI</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
             padding: 20px;
         }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-            overflow: hidden;
-        }
-
-        .header {
-            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
-            color: white;
-            padding: 30px;
+        h1 {
             text-align: center;
+            color: #4CAF50;
         }
-
-        .header h1 {
-            font-size: 2.2rem;
-            margin-bottom: 10px;
-        }
-
-        .header p {
-            font-size: 1.1rem;
-            opacity: 0.9;
-        }
-
-        .main-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-            padding: 30px;
-        }
-
-        .input-section {
-            background: #f8f9fa;
-            padding: 25px;
-            border-radius: 12px;
-            border: 2px solid #e9ecef;
-        }
-
-        .results-section {
-            background: #fff5f5;
-            padding: 25px;
-            border-radius: 12px;
-            border: 2px solid #fed7d7;
-        }
-
-        .section-title {
-            font-size: 1.4rem;
-            color: #2d3748;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .attendant-form {
+        .container {
+            max-width: 600px;
+            margin: auto;
             background: white;
             padding: 20px;
             border-radius: 8px;
-            margin-bottom: 15px;
-            border: 1px solid #e2e8f0;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-
-        .form-group {
-            margin-bottom: 15px;
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            width: 100%;
         }
-
-        label {
-            display: block;
-            font-weight: 600;
-            color: #4a5568;
-            margin-bottom: 5px;
+        button:hover {
+            background-color: #45a049;
         }
-
-        select, input {
+        select, input[type="checkbox"] {
+            margin-top: 10px;
             width: 100%;
             padding: 10px;
-            border: 2px solid #e2e8f0;
-            border-radius: 6px;
-            font-size: 14px;
-            transition: border-color 0.2s;
-        }
-
-        select:focus, input:focus {
-            outline: none;
-            border-color: #3182ce;
-        }
-
-        .button-group {
-            display: flex;
-            gap: 10px;
-            margin-top: 15px;
-        }
-
-        button {
-            padding: 10px 20px;
-            border: none;
-            border-radius: 6px;
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .btn-primary {
-            background: #3182ce;
-            color: white;
-        }
-
-        .btn-secondary {
-            background: #718096;
-            color: white;
-        }
-
-        .btn-danger {
-            background: #e53e3e;
-            color: white;
-        }
-
-        .btn-success {
-            background: #38a169;
-            color: white;
-        }
-
-        button:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-        }
-
-        .attendant-list {
-            max-height: 400px;
-            overflow-y: auto;
-        }
-
-        .summary-stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 15px;
-            margin-bottom: 20px;
-        }
-
-        .stat-card {
-            background: white;
-            padding: 15px;
-            border-radius: 8px;
-            text-align: center;
-            border: 1px solid #e2e8f0;
-        }
-
-        .stat-value {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #2d3748;
-        }
-
-        .stat-label {
-            font-size: 0.9rem;
-            color: #718096;
-            margin-top: 5px;
-        }
-
-        .cost-breakdown {
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            border: 1px solid #e2e8f0;
-            margin-top: 20px;
-        }
-
-        .cost-item {
-            display: flex;
-            justify-content: space-between;
-            padding: 10px 0;
-            border-bottom: 1px solid #f7fafc;
-        }
-
-        .cost-item:last-child {
-            border-bottom: none;
-            font-weight: bold;
-            font-size: 1.1rem;
-            color: #2d3748;
-        }
-
-        .alert {
-            padding: 15px;
-            border-radius: 8px;
-            margin: 20px 0;
-            font-weight: 600;
-        }
-
-        .alert-danger {
-            background: #fed7d7;
-            color: #c53030;
-            border: 1px solid #f56565;
-        }
-
-        .alert-success {
-            background: #c6f6d5;
-            color: #2f855a;
-            border: 1px solid #68d391;
-        }
-
-        .hidden {
-            display: none;
-        }
-
-        .attendant-header {
-            font-weight: bold;
-            color: #2d3748;
-            margin-bottom: 10px;
-            padding-bottom: 5px;
-            border-bottom: 2px solid #e2e8f0;
-        }
-
-        @media (max-width: 768px) {
-            .main-content {
-                grid-template-columns: 1fr;
-                gap: 20px;
-                padding: 20px;
-            }
-            
-            .summary-stats {
-                grid-template-columns: repeat(2, 1fr);
-            }
+            border-radius: 5px;
+            border: 1px solid #ccc;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>🏨 Hotel Room Attendant Injury Cost Calculator</h1>
-            <p>Workers' Compensation ROI Analysis Tool</p>
-        </div>
 
-        <div class="main-content">
-            <div class="input-section">
-                <h2 class="section-title">
-                    👥 Attendant Status Input
-                </h2>
+<div class="container">
+    <h1>Neet Sheets ROI</h1>
+    
+    <label for="attendantStatus">Select Attendant Status:</label>
+    <select id="attendantStatus">
+        <option value="injured">Injured</option>
+        <option value="not_injured">Not Injured</option>
+    </select>
 
-                <div class="attendant-form">
-                    <div class="attendant-header">Add New Attendant</div>
-                    
-                    <div class="form-group">
-                        <label for="attendantName">Attendant Name/ID:</label>
-                        <input type="text" id="attendantName" placeholder="Enter attendant name or ID">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="injuryStatus">Injured Room Attendant?</label>
-                        <select id="injuryStatus" onchange="toggleInjuryDetails()">
-                            <option value="no">No</option>
-                            <option value="yes">Yes</option>
-                        </select>
-                    </div>
-
-                    <div id="injuryDetails" class="hidden">
-                        <div class="form-group">
-                            <label for="injuryMethod">How were they injured?</label>
-                            <select id="injuryMethod">
-                                <option value="mattress_lifting">Mattress Lifting</option>
-                                <option value="fitted_sheets">Pulling Fitted Sheets</option>
-                                <option value="bending_lifting">Bending and Lifting</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="injuryType">What type of injury?</label>
-                            <select id="injuryType">
-                                <option value="shoulder">Shoulder</option>
-                                <option value="back">Back</option>
-                                <option value="neck">Neck</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="button-group">
-                        <button type="button" class="btn-primary" onclick="addAttendant()">Add Attendant</button>
-                        <button type="button" class="btn-secondary" onclick="clearForm()">Clear Form</button>
-                    </div>
-                </div>
-
-                <div class="attendant-list" id="attendantList">
-                    <!-- Attendant entries will be added here -->
-                </div>
-
-                <div class="button-group" style="margin-top: 20px;">
-                    <button type="button" class="btn-success" onclick="calculateTotals()">Calculate Total Losses</button>
-                    <button type="button" class="btn-danger" onclick="clearAll()">Clear All</button>
-                </div>
-            </div>
-
-            <div class="results-section">
-                <h2 class="section-title">
-                    📊 Cost Analysis Results
-                </h2>
-
-                <div class="summary-stats">
-                    <div class="stat-card">
-                        <div class="stat-value" id="totalAttendants">0</div>
-                        <div class="stat-label">Total Attendants</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-value" id="injuredCount">0</div>
-                        <div class="stat-label">Injured</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-value" id="totalCost">$0</div>
-                        <div class="stat-label">Total Cost</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-value" id="avgCost">$0</div>
-                        <div class="stat-label">Avg Cost/Injury</div>
-                    </div>
-                </div>
-
-                <div id="corporateAlert" class="hidden">
-                    <!-- Corporate call alert will appear here -->
-                </div>
-
-                <div class="cost-breakdown">
-                    <h3 style="margin-bottom: 15px; color: #2d3748;">💰 Cost Breakdown by Injury Type</h3>
-                    <div id="costBreakdown">
-                        <div class="cost-item">
-                            <span>Shoulder Injuries:</span>
-                            <span id="shoulderCost">$0</span>
-                        </div>
-                        <div class="cost-item">
-                            <span>Back Injuries:</span>
-                            <span id="backCost">$0</span>
-                        </div>
-                        <div class="cost-item">
-                            <span>Neck Injuries:</span>
-                            <span id="neckCost">$0</span>
-                        </div>
-                        <div class="cost-item">
-                            <span>Total Direct Costs:</span>
-                            <span id="totalDirectCost">$0</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="cost-breakdown">
-                    <h3 style="margin-bottom: 15px; color: #2d3748;">📈 Additional Impact Metrics</h3>
-                    <div id="additionalMetrics">
-                        <div class="cost-item">
-                            <span>Estimated Lost Work Days:</span>
-                            <span id="lostDays">0</span>
-                        </div>
-                        <div class="cost-item">
-                            <span>Estimated Indirect Costs (3x):</span>
-                            <span id="indirectCosts">$0</span>
-                        </div>
-                        <div class="cost-item">
-                            <span>Total Economic Impact:</span>
-                            <span id="totalImpact">$0</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div id="injuryDetails" style="display:none;">
+        <label for="injuryType">Select Injury Type:</label>
+        <select id="injuryType">
+            <option value="shoulder">Shoulder</option>
+            <option value="back">Back</option>
+            <option value="neck">Neck</option>
+        </select>
     </div>
 
-    <script>
-        // Cost data based on the research document
-        const injuryCosts = {
-            shoulder: 22000,  // Average of $14k-$29k range, shoulder tends toward higher end
-            back: 27000,      // Back injuries are most severe, using higher end of range
-            neck: 20000       // Neck injuries, middle range
-        };
+    <label for="totalLosses">Total Losses:</label>
+    <input type="number" id="totalLosses" placeholder="Enter total losses in dollars">
 
-        let attendants = [];
+    <label for="corporateCall">Corporate Call:</label>
+    <input type="checkbox" id="corporateCall"> Schedule a call with CEO
 
-        function toggleInjuryDetails() {
-            const injuryStatus = document.getElementById('injuryStatus').value;
-            const injuryDetails = document.getElementById('injuryDetails');
-            
-            if (injuryStatus === 'yes') {
-                injuryDetails.classList.remove('hidden');
-            } else {
-                injuryDetails.classList.add('hidden');
+    <button onclick="calculate()">Submit</button>
+
+    <div id="result" style="margin-top: 20px;"></div>
+</div>
+
+<script>
+    document.getElementById('attendantStatus').addEventListener('change', function() {
+        const injuryDetails = document.getElementById('injuryDetails');
+        injuryDetails.style.display = this.value === 'injured' ? 'block' : 'none';
+    });
+
+    function calculate() {
+        const attendantStatus = document.getElementById('attendantStatus').value;
+        const totalLosses = parseFloat(document.getElementById('totalLosses').value);
+        const corporateCall = document.getElementById('corporateCall').checked;
+        let resultText = '';
+
+        if (attendantStatus === 'injured') {
+            const injuryType = document.getElementById('injuryType').value;
+            let injuryCost = 0;
+
+            switch (injuryType) {
+                case 'shoulder':
+                    injuryCost = 5000; // Example cost
+                    break;
+                case 'back':
+                    injuryCost = 7000; // Example cost
+                    break;
+                case 'neck':
+                    injuryCost = 3000; // Example cost
+                    break;
             }
+            resultText += `Injury Cost for ${injuryType}: $${injuryCost}<br>`;
+        } else {
+            resultText += 'No injury reported.<br>';
         }
 
-        function addAttendant() {
-            const name = document.getElementById('attendantName').value.trim();
-            const injuryStatus = document.getElementById('injuryStatus').value;
-            
-            if (!name) {
-                alert('Please enter an attendant name or ID');
-                return;
-            }
-
-            const attendant = {
-                id: Date.now(),
-                name: name,
-                injured: injuryStatus === 'yes',
-                injuryMethod: injuryStatus === 'yes' ? document.getElementById('injuryMethod').value : null,
-                injuryType: injuryStatus === 'yes' ? document.getElementById('injuryType').value : null,
-                cost: injuryStatus === 'yes' ? injuryCosts[document.getElementById('injuryType').value] : 0
-            };
-
-            attendants.push(attendant);
-            updateAttendantList();
-            clearForm();
-            updateSummary();
+        if (corporateCall && totalLosses > 25000) {
+            resultText += 'CEO will schedule a call.<br>';
         }
 
-        function updateAttendantList() {
-            const listContainer = document.getElementById('attendantList');
-            listContainer.innerHTML = '';
+        document.getElementById('result').innerHTML = resultText;
+    }
+</script>
 
-            attendants.forEach((attendant, index) => {
-                const attendantDiv = document.createElement('div');
-                attendantDiv.className = 'attendant-form';
-                attendantDiv.innerHTML = `
-                    <div style="display: flex; justify-content: space-between; align-items: center;">
-                        <div>
-                            <strong>${attendant.name}</strong><br>
-                            Status: ${attendant.injured ? 
-                                `Injured - ${attendant.injuryMethod.replace('_', ' ')} (${attendant.injuryType})` : 
-                                'Not Injured'}<br>
-                            Cost: <strong>$${attendant.cost.toLocaleString()}</strong>
-                        </div>
-                        <button class="btn-danger" onclick="removeAttendant(${attendant.id})" style="padding: 5px 10px;">Remove</button>
-                    </div>
-                `;
-                listContainer.appendChild(attendantDiv);
-            });
-        }
-
-        function removeAttendant(id) {
-            attendants = attendants.filter(a => a.id !== id);
-            updateAttendantList();
-            updateSummary();
-        }
-
-        function clearForm() {
-            document.getElementById('attendantName').value = '';
-            document.getElementById('injuryStatus').value = 'no';
-            document.getElementById('injuryDetails').classList.add('hidden');
-        }
-
-        function clearAll() {
-            if (confirm('Are you sure you want to clear all data?')) {
-                attendants = [];
-                updateAttendantList();
-                updateSummary();
-                clearForm();
-            }
-        }
-
-        function calculateTotals() {
-            updateSummary();
-            checkCorporateCall();
-        }
-
-        function updateSummary() {
-            const totalAttendants = attendants.length;
-            const injuredAttendants = attendants.filter(a => a.injured);
-            const injuredCount = injuredAttendants.length;
-            const totalCost = attendants.reduce((sum, a) => sum + a.cost, 0);
-            const avgCost = injuredCount > 0 ? totalCost / injuredCount : 0;
-
-            // Update summary stats
-            document.getElementById('totalAttendants').textContent = totalAttendants;
-            document.getElementById('injuredCount').textContent = injuredCount;
-            document.getElementById('totalCost').textContent = `$${totalCost.toLocaleString()}`;
-            document.getElementById('avgCost').textContent = `$${Math.round(avgCost).toLocaleString()}`;
-
-            // Update cost breakdown
-            const shoulderCost = attendants.filter(a => a.injuryType === 'shoulder').reduce((sum, a) => sum + a.cost, 0);
-            const backCost = attendants.filter(a => a.injuryType === 'back').reduce((sum, a) => sum + a.cost, 0);
-            const neckCost = attendants.filter(a => a.injuryType === 'neck').reduce((sum, a) => sum + a.cost, 0);
-
-            document.getElementById('shoulderCost').textContent = `$${shoulderCost.toLocaleString()}`;
-            document.getElementById('backCost').textContent = `$${backCost.toLocaleString()}`;
-            document.getElementById('neckCost').textContent = `$${neckCost.toLocaleString()}`;
-            document.getElementById('totalDirectCost').textContent = `$${totalCost.toLocaleString()}`;
-
-            // Calculate additional metrics
-            const lostDays = injuredCount * 14; // Average 14 lost days per injury
-            const indirectCosts = totalCost * 3; // 3x multiplier for indirect costs
-            const totalImpact = totalCost + indirectCosts;
-
-            document.getElementById('lostDays').textContent = lostDays;
-            document.getElementById('indirectCosts').textContent = `$${indirectCosts.toLocaleString()}`;
-            document.getElementById('totalImpact').textContent = `$${totalImpact.toLocaleString()}`;
-        }
-
-        function checkCorporateCall() {
-            const totalCost = attendants.reduce((sum, a) => sum + a.cost, 0);
-            const alertContainer = document.getElementById('corporateAlert');
-            
-            if (totalCost > 25000) {
-                alertContainer.className = 'alert alert-danger';
-                alertContainer.innerHTML = `
-                    <strong>🚨 CORPORATE ALERT!</strong><br>
-                    Total losses of $${totalCost.toLocaleString()} exceed $25,000 threshold.<br>
-                    <strong>CEO will schedule a call to review these incidents.</strong>
-                `;
-            } else if (totalCost > 0) {
-                alertContainer.className = 'alert alert-success';
-                alertContainer.innerHTML = `
-                    <strong>✅ Within Threshold</strong><br>
-                    Total losses of $${totalCost.toLocaleString()} are below the $25,000 corporate review threshold.
-                `;
-            } else {
-                alertContainer.className = 'hidden';
-            }
-        }
-
-        // Initialize the page
-        document.addEventListener('DOMContentLoaded', function() {
-            updateSummary();
-        });
-    </script>
 </body>
 </html>
+```
+
+### Explanation:
+1. **HTML Structure**: The page is structured with a header, input fields, and a button.
+2. **CSS Styling**: Basic styles are applied for layout and aesthetics.
+3. **JavaScript Logic**: The script handles user interactions, showing/hiding elements based on selections and calculating results based on the input values.
+4. **Dynamic Elements**: The injury details section is displayed only when "Injured" is selected from the dropdown.
+
+You can further enhance the design and functionality as needed!

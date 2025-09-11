@@ -1,0 +1,57 @@
+Sure! Below is a simple HTML/JavaScript implementation of the counting odd and even numbers as described in your FlowCode. This code will display numbers from 1 to 20, highlighting even numbers in red and odd numbers in black.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Count Odd and Even Numbers</title>
+    <style>
+        .even {
+            color: red;
+            font-weight: bold;
+        }
+        .odd {
+            color: black;
+            font-weight: bold;
+        }
+        #output {
+            font-size: 24px;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Count Odd and Even Numbers</h1>
+<div id="output">Press the button to start counting!</div>
+<button id="nextButton">Next Number</button>
+
+<script>
+    let count = 1;
+    const outputDiv = document.getElementById('output');
+    const nextButton = document.getElementById('nextButton');
+
+    nextButton.addEventListener('click', function() {
+        if (count <= 20) {
+            let numberClass = count % 2 === 0 ? 'even' : 'odd';
+            outputDiv.innerHTML = `<span class="${numberClass}">${count}</span>`;
+            count++;
+        } else {
+            outputDiv.innerHTML = "Counting finished!";
+            nextButton.disabled = true; // Disable button after reaching 20
+        }
+    });
+</script>
+
+</body>
+</html>
+```
+
+### Explanation:
+- The HTML structure includes a heading, a div for output, and a button to trigger the counting.
+- The CSS styles define how even and odd numbers will be displayed (red for even and black for odd).
+- The JavaScript code initializes a counter and listens for button clicks. Each click increments the counter, checks if the number is odd or even, and updates the output accordingly. After reaching 20, it disables the button and displays a message indicating that counting is finished.
+
+You can copy and paste this code into an HTML file and open it in a web browser to see it in action!
