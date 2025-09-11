@@ -2,7 +2,7 @@
 ;  c1995-2015: Visual Flow Coder by 2LResearch
 ;
 ;  File Name : buildAI.py.vfc
-;  File Date : 09:24:13 PM - 05:Sep:2025
+;  File Date : 10:34:30 PM - 10:Sep:2025
 
 set();// !/usr/bin/env python3
 event(import argparse);// 
@@ -232,4 +232,4 @@ bend();// endif
 ;    //   #   .
 ; notepad.exe
 ;INSECTA EMBEDDED ALTSESSION INFORMATION
-; 439 196 1166 1217 0 110   532   4294966923    python.key  0
+; 605 4 697 95 1 110   583   60    python.key  0

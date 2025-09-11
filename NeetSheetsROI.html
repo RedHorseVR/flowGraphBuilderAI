@@ -1,0 +1,132 @@
+Below is a simple HTML web page that implements the logic from your flowchart. The page includes buttons, dropdown lists, and checkboxes to gather input from the user. The design is basic but can be easily customized with CSS for better aesthetics.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neet Sheets ROI</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #4CAF50;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        select, input[type="checkbox"] {
+            margin-top: 10px;
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Neet Sheets ROI</h1>
+    
+    <label for="attendantStatus">Select Attendant Status:</label>
+    <select id="attendantStatus">
+        <option value="injured">Injured</option>
+        <option value="not_injured">Not Injured</option>
+    </select>
+
+    <div id="injuryDetails" style="display:none;">
+        <label for="injuryType">Select Injury Type:</label>
+        <select id="injuryType">
+            <option value="shoulder">Shoulder</option>
+            <option value="back">Back</option>
+            <option value="neck">Neck</option>
+        </select>
+    </div>
+
+    <label for="totalLosses">Total Losses:</label>
+    <input type="number" id="totalLosses" placeholder="Enter total losses in dollars">
+
+    <label for="corporateCall">Corporate Call:</label>
+    <input type="checkbox" id="corporateCall"> Schedule a call with CEO
+
+    <button onclick="calculate()">Submit</button>
+
+    <div id="result" style="margin-top: 20px;"></div>
+</div>
+
+<script>
+    document.getElementById('attendantStatus').addEventListener('change', function() {
+        const injuryDetails = document.getElementById('injuryDetails');
+        injuryDetails.style.display = this.value === 'injured' ? 'block' : 'none';
+    });
+
+    function calculate() {
+        const attendantStatus = document.getElementById('attendantStatus').value;
+        const totalLosses = parseFloat(document.getElementById('totalLosses').value);
+        const corporateCall = document.getElementById('corporateCall').checked;
+        let resultText = '';
+
+        if (attendantStatus === 'injured') {
+            const injuryType = document.getElementById('injuryType').value;
+            let injuryCost = 0;
+
+            switch (injuryType) {
+                case 'shoulder':
+                    injuryCost = 5000; // Example cost
+                    break;
+                case 'back':
+                    injuryCost = 7000; // Example cost
+                    break;
+                case 'neck':
+                    injuryCost = 3000; // Example cost
+                    break;
+            }
+            resultText += `Injury Cost for ${injuryType}: $${injuryCost}<br>`;
+        } else {
+            resultText += 'No injury reported.<br>';
+        }
+
+        if (corporateCall && totalLosses > 25000) {
+            resultText += 'CEO will schedule a call.<br>';
+        }
+
+        document.getElementById('result').innerHTML = resultText;
+    }
+</script>
+
+</body>
+</html>
+```
+
+### Explanation:
+1. **HTML Structure**: The page is structured with a header, input fields, and a button.
+2. **CSS Styling**: Basic styles are applied for layout and aesthetics.
+3. **JavaScript Logic**: The script handles user interactions, showing/hiding elements based on selections and calculating results based on the input values.
+4. **Dynamic Elements**: The injury details section is displayed only when "Injured" is selected from the dropdown.
+
+You can further enhance the design and functionality as needed!
