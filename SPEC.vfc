@@ -2,7 +2,7 @@
 ;  c1995-2015: Visual Flow Coder by 2LResearch
 ;
 ;  File Name : SPEC.vfc
-;  File Date : 08:19:00 PM - 22:Aug:2025
+;  File Date : 09:03:30 PM - 05:Sep:2025
 
 
 input(Main);//
@@ -16,4 +16,4 @@ end(exit);//
 ;    SPEC   //   ...
 ; notepad.exe
 ;INSECTA EMBEDDED ALTSESSION INFORMATION
-; 568 240 940 640 0 100   349   173    default.key  0
+; 408 389 1093 866 0 180   498   193    default.key  0
