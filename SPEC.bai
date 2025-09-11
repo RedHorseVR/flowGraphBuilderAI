@@ -1,0 +1,53 @@
+Sure! Below is a simple HTML/JavaScript code that creates a webpage to count from 1 to 10. You can copy and paste this code into a `.html` file and open it in your web browser.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Count to 10</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        #countDisplay {
+            font-size: 24px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Counting to 10</h1>
+    <button id="countButton">Count to 10</button>
+    <div id="countDisplay"></div>
+
+    <script>
+        document.getElementById('countButton').addEventListener('click', function() {
+            let countDisplay = document.getElementById('countDisplay');
+            countDisplay.innerHTML = ''; // Clear previous counts
+            for (let i = 1; i <= 10; i++) {
+                setTimeout(() => {
+                    countDisplay.innerHTML += i + '<br>';
+                }, i * 1000); // Delay of 1 second for each count
+            }
+        });
+    </script>
+
+</body>
+</html>
+```
+
+### Explanation:
+- The HTML structure includes a button to start counting and a div to display the count.
+- The JavaScript code listens for a click event on the button. When clicked, it counts from 1 to 10, displaying each number with a 1-second delay between them.
+- The `setTimeout` function is used to create the delay for each count.
+
+### How to Use:
+1. Copy the code above.
+2. Paste it into a text editor and save it as `count_to_10.html`.
+3. Open the saved file in a web browser.
+4. Click the "Count to 10" button to see the counting in action!

@@ -1,0 +1,62 @@
+Certainly! Below is a simple HTML/JavaScript implementation that mimics the functionality described in your FlowCode. This code will display numbers from 1 to 20, showing even numbers in red and odd numbers in black, one at a time.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counting Numbers</title>
+    <style>
+        #numberDisplay {
+            font-size: 48px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div id="numberDisplay"></div>
+    <button id="nextButton">Next Number</button>
+
+    <script>
+        let count = 1;
+        const maxCount = 20;
+
+        function displayNumber() {
+            const numberDisplay = document.getElementById('numberDisplay');
+            if (count > maxCount) {
+                numberDisplay.innerHTML = "Counting Finished!";
+                document.getElementById('nextButton').disabled = true; // Disable button after counting is done
+                return;
+            }
+
+            // Determine the color based on whether the number is even or odd
+            if (count % 2 === 0) {
+                numberDisplay.style.color = 'red'; // Even numbers in red
+            } else {
+                numberDisplay.style.color = 'black'; // Odd numbers in black
+            }
+
+            numberDisplay.innerHTML = count;
+            count++;
+        }
+
+        document.getElementById('nextButton').addEventListener('click', displayNumber);
+
+        // Display the first number on page load
+        displayNumber();
+    </script>
+</body>
+</html>
+```
+
+### Explanation:
+1. **HTML Structure**: The HTML consists of a `div` to display the number and a button to trigger the next number.
+2. **CSS Styles**: The styles are defined to make the number bold and set the font size.
+3. **JavaScript Logic**:
+   - A counter (`count`) starts at 1 and increments up to 20.
+   - The `displayNumber` function checks if the count is even or odd and sets the color accordingly.
+   - The button is used to display the next number, and it gets disabled once the counting is finished.
+
+### Usage:
+- Simply copy and paste the above code into an HTML file and open it in a web browser. Click the "Next Number" button to see the numbers displayed one at a time.
