@@ -2,12 +2,27 @@
 ;  c1995-2015: Visual Flow Coder by 2LResearch
 ;
 ;  File Name : count.html.vfc
-;  File Date : 12:37:24 PM - 11:Sep:2025
+;  File Date : 11:39:04 PM - 15:Sep:2025
 
 
 input(Main);//
-process(make a program to count to 10);//
-end(exit);//
+process(objects = SHOW BALLS);//
+loop(repeat forever);//
+loop(    do for all objects);//
+branch(when object clicked);//
+path( );//
+process(make it bounce five times);//
+bend( );//
+lend();//
+lend(keep going);//
+end(END );//
+
+input(FUNCTION SHOW BALLS);//
+set(objects = [ 'red ball'. 'blue ball', 'green ball' ] );//
+loop(    for each object in objects  );//
+output(show object);//
+lend(  next object );//
+end(return objects);//
 
 
 
@@ -16,4 +31,4 @@ end(exit);//
 ;    count.html   //   ...
 ; notepad.exe
 ;INSECTA EMBEDDED ALTSESSION INFORMATION
-; 408 389 1093 866 1 180   546   60    BuildAI.key  0
+; 103 542 1493 981 1 210   753   141    BuildAI.key  0

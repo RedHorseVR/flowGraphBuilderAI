@@ -1,3 +1,3 @@
-
-python BuildAI.py --force -p "build as singl HTML/JS page" %1.vfc 
+echo running : %1 ...
+python _BuildAI.py --force -p "build as singl HTML/JS page" %1.vfc 
 pause
