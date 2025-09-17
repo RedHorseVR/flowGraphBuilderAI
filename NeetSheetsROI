@@ -1,0 +1,83 @@
+Sure! Below is a simple HTML/JavaScript implementation based on the flowchart logic you provided. This code creates a web page that uses popup dialogs for user input and processes the information according to the flowchart.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeetSheets ROI</title>
+    <script>
+        function calculateROI() {
+            let totalLosses = 0;
+            let moreAttendants = true;
+
+            while (moreAttendants) {
+                let attendantStatus = prompt("Enter Attendant Status (injured or not):");
+
+                if (attendantStatus.toLowerCase() === "injured") {
+                    let injuryType = prompt("How were they injured? (mattress lifting, pulling fitted sheets, bending and lifting):");
+                    let injuryCost = 0;
+
+                    switch (injuryType.toLowerCase()) {
+                        case "mattress lifting":
+                            injuryCost = getCost("Shoulder");
+                            break;
+                        case "pulling fitted sheets":
+                            injuryCost = getCost("Back");
+                            break;
+                        case "bending and lifting":
+                            injuryCost = getCost("Neck");
+                            break;
+                        default:
+                            alert("No cost for this injury type.");
+                            injuryCost = 0;
+                    }
+
+                    totalLosses += injuryCost;
+                }
+
+                moreAttendants = confirm("Add another attendant?");
+            }
+
+            if (totalLosses > 25000) {
+                alert("CEO will schedule a call.");
+            }
+        }
+
+        function getCost(injuryType) {
+            let cost = 0;
+            switch (injuryType) {
+                case "Shoulder":
+                    cost = 10000; // Example cost
+                    break;
+                case "Back":
+                    cost = 15000; // Example cost
+                    break;
+                case "Neck":
+                    cost = 12000; // Example cost
+                    break;
+                default:
+                    cost = 0;
+            }
+            return cost;
+        }
+    </script>
+</head>
+<body>
+    <h1>NeetSheets ROI Calculator</h1>
+    <button onclick="calculateROI()">Start Calculation</button>
+</body>
+</html>
+```
+
+### Explanation:
+1. **HTML Structure**: The page contains a title and a button that starts the calculation process.
+2. **JavaScript Logic**:
+   - The `calculateROI` function handles the main logic of the flowchart.
+   - It prompts the user for the status of each attendant and whether they are injured.
+   - Depending on the injury type, it calls the `getCost` function to retrieve the associated costs.
+   - It keeps track of the total losses and checks if they exceed $25,000 to determine if a call should be scheduled.
+3. **Cost Function**: The `getCost` function returns predefined costs for different injury types.
+
+You can copy and paste this code into an HTML file and open it in a web browser to see it in action.

@@ -1,0 +1,125 @@
+Certainly! Below is a simple HTML/JavaScript implementation of the flow you provided. This code creates a single-page application that simulates the process of tracking worker injuries and calculating costs.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeetSheets ROI</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .hidden {
+            display: none;
+        }
+        .result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<h1>NeetSheets ROI Tracker</h1>
+
+<div id="attendantForm">
+    <h2>Input Attendant Status</h2>
+    <label for="injured">Is the attendant injured?</label>
+    <select id="injured">
+        <option value="no">No</option>
+        <option value="yes">Yes</option>
+    </select>
+    <button onclick="checkInjury()">Submit</button>
+</div>
+
+<div id="injuryDetails" class="hidden">
+    <h2>Injury Details</h2>
+    <label for="injuryType">How were they injured?</label>
+    <select id="injuryType">
+        <option value="mattress lifting">Mattress Lifting</option>
+        <option value="pulling fitted sheets">Pulling Fitted Sheets</option>
+        <option value="bending and lifting">Bending and Lifting</option>
+    </select>
+    <label for="injuryLocation">What type of injury?</label>
+    <select id="injuryLocation">
+        <option value="shoulder">Shoulder</option>
+        <option value="back">Back</option>
+        <option value="neck">Neck</option>
+        <option value="none">None</option>
+    </select>
+    <button onclick="calculateCost()">Calculate Cost</button>
+</div>
+
+<div id="corporateCall" class="hidden">
+    <h2>Corporate Call</h2>
+    <label for="totalLosses">Enter total losses ($):</label>
+    <input type="number" id="totalLosses" />
+    <button onclick="checkCorporateCall()">Check Corporate Call</button>
+</div>
+
+<div id="result" class="result hidden"></div>
+
+<script>
+    let totalCosts = 0;
+
+    function checkInjury() {
+        const injured = document.getElementById('injured').value;
+        if (injured === 'yes') {
+            document.getElementById('injuryDetails').classList.remove('hidden');
+        } else {
+            document.getElementById('result').innerText = 'No costs incurred.';
+            document.getElementById('result').classList.remove('hidden');
+        }
+    }
+
+    function calculateCost() {
+        const injuryLocation = document.getElementById('injuryLocation').value;
+        let cost = 0;
+
+        switch (injuryLocation) {
+            case 'shoulder':
+                cost = 5000; // Example cost for shoulder injury
+                break;
+            case 'back':
+                cost = 7000; // Example cost for back injury
+                break;
+            case 'neck':
+                cost = 6000; // Example cost for neck injury
+                break;
+            default:
+                cost = 0;
+        }
+
+        totalCosts += cost;
+        document.getElementById('result').innerText = `Total costs incurred: $${totalCosts}`;
+        document.getElementById('result').classList.remove('hidden');
+        document.getElementById('injuryDetails').classList.add('hidden');
+        document.getElementById('corporateCall').classList.remove('hidden');
+    }
+
+    function checkCorporateCall() {
+        const totalLosses = parseFloat(document.getElementById('totalLosses').value);
+        if (totalLosses > 25000) {
+            document.getElementById('result').innerText += '\nCEO will schedule a call.';
+        } else {
+            document.getElementById('result').innerText += '\nNo need for a corporate call.';
+        }
+    }
+</script>
+
+</body>
+</html>
+```
+
+### Explanation:
+1. **HTML Structure**: The page contains forms to input the attendant's injury status, injury details, and total losses.
+2. **JavaScript Functions**:
+   - `checkInjury()`: Checks if the attendant is injured and shows the injury details form if they are.
+   - `calculateCost()`: Calculates the cost based on the type of injury selected and updates the total costs.
+   - `checkCorporateCall()`: Checks if the total losses exceed $25,000 and displays a message accordingly.
+3. **Styling**: Basic CSS is used to style the page and hide/show elements as needed.
+
+You can copy and paste this code into an HTML file and open it in a web browser to see it in action.
